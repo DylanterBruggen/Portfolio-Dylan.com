@@ -1,0 +1,155 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Ensure full height and remove default margins/padding */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: auto;
+}
+
+/* Use flexbox on the body */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body covers the viewport height */
+}
+
+/* Main content area pushes the footer to the bottom */
+.main-content {
+    flex: 1;
+    padding: 20px; /* Adjust as needed */
+}
+
+/* Footer styling */
+footer {
+    position: fixed;
+    bottom: 0;
+    padding-top: 25px;
+    width: 100%;
+    height: 50px;
+}
+
+.footerContent {
+    padding-top: 25px;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+/* Additional existing styles remain unchanged */
+.experience-section {
+    padding: 3rem 0;
+}
+
+.subsection-title {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid #0056b3;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.education-section,
+.internship-section,
+.work-section {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.program,
+.duration,
+.institution,
+.internship-year,
+.internship-duration {
+    margin-bottom: 0.5rem;
+}
+
+.skills-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #0056b3;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+    .skills-list li {
+        background-color: #e0e0e0;
+        padding: 0.5rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.875rem;
+    }
+
+a {
+    color: #0056b3;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+    a:hover {
+        color: #003d80;
+    }
+
+.carousel {
+    width: 90%;
+    margin: 0 auto; /* centers the carousel horizontally */
+}
+
+/* Carousel image styling */
+.carousel-inner img {
+    object-fit: cover;
+    padding: 25px;
+    height: 750px;
+    width: 90%;
+    border-radius: 10px;
+}
+
+/* Smooth hover effect on carousel items */
+.carousel-item {
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-inner .carousel-item img {
+    display: block; /* voorkomt inline-spacing issues */
+    width: 100%; /* vult de hele slide-breedte */
+    height: auto; /* laat hoogte meeschalen */
+}
+
+.carousel-item:hover {
+    transform: scale(1.02);
+}
+
+ul {
+    list-style-type: none; /* Removes the bullets */
+    margin: 0; /* Removes default margin */
+    padding: 0; /* Removes default padding */
+}
