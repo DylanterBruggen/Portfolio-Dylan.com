@@ -1,0 +1,55 @@
+﻿<div class="account-dashboard container mt-5">
+    <ul class="nav nav-tabs custom-tabs mb-4" id="Account-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#tab1">site logs</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" href="#tab2">Settings</a>
+        </li>
+    </ul>
+
+    <div class="tab-content-container">
+        <div class="tab-content" id="tab1">
+            <div id="site-logs" class="text-light">
+                <h1>Site Logs</h1>
+                <!-- site logs will be rendered here -->
+            </div>
+        </div>
+
+        <div class="tab-content active" id="tab2">
+            <div class="settings-container text-light">
+                <br />
+                <h1>if you update your info log out and back in to sea updated user info</h1>
+                <br />
+                <form asp-action="ChangeUsername" method="post" class="mb-3">
+                    <h4>Change username</h4>
+                    <h5>Username: @(User.Identity.Name ?? "User")</h5>
+                    <div class="input-group">
+                        <input type="text" name="NewUsername" class="form-control" placeholder="New username" required />
+                        <button class="btn btn-outline-light" type="submit">update</button>
+                    </div>
+                    <div class="text-danger">@ViewBag.ErrorUsername</div>
+                </form>
+                <br />
+                <form asp-action="ChangeEmail" method="post" class="mb-3">
+                    <h4>Change email</h4>
+                    <h5>Email: @User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</h5>
+                    <div class="input-group">
+                        <input type="email" name="NewEmail" class="form-control" placeholder="New email" required />
+                        <button class="btn btn-outline-light" type="submit">update</button>
+                    </div>
+                    <div class="text-danger">@ViewBag.ErrorEmail</div>
+                </form>
+                <br />
+                <form asp-action="ChangePassword" method="post" class="mb-3">
+                    <h4>Change password</h4>
+                    <input type="password" name="CurrentPassword" class="form-control mb-2" placeholder="Current password" required />
+                    <input type="password" name="NewPassword" class="form-control mb-2" placeholder="New password" required />
+                    <button type="submit" class="btn btn-outline-light w-100">update</button>
+                    <div class="text-danger">@ViewBag.ErrorPassword</div>
+                </form>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
