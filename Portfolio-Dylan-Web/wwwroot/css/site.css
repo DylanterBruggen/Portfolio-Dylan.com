@@ -1,3 +1,17 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Root Variables for Color Scheme */
+:root {
+    --primary: #0056b3;
+    --primary-light: #258cfb;
+    --secondary: #e0e0e0;
+    --background: #f8f9fa;
+    --text-dark: #1a1a1a;
+    --text-light: #ffffff;
+}
+
+/* Base Styles */
 html {
     font-size: 14px;
     position: relative;
@@ -12,88 +26,108 @@ html {
     }
 }
 
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-/* Ensure full height and remove default margins/padding */
-html, body {
+body {
     margin: 0;
     padding: 0;
-    height: auto;
-}
-
-/* Use flexbox on the body */
-body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background);
+    color: var(--text-dark);
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Ensures the body covers the viewport height */
+    min-height: 100vh;
+    padding-bottom: 80px;
 }
 
-/* Main content area pushes the footer to the bottom */
 .main-content {
     flex: 1;
-    padding: 20px; /* Adjust as needed */
+    padding: 20px;
 }
 
-/* Footer styling */
+/* Button Styling */
+.btn {
+    background-color: var(--primary);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+    .btn:hover {
+        background-color: var(--primary-light);
+    }
+
+    .btn:focus,
+    .btn:active:focus,
+    .btn-link.nav-link:focus,
+    .form-control:focus,
+    .form-check-input:focus {
+        box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem var(--primary-light);
+    }
+
+/* Footer */
 footer {
-    position: fixed;
-    bottom: 0;
-    padding-top: 25px;
-    width: 100%;
-    height: 50px;
+    background-color: var(--background);
+    text-align: center;
 }
 
 .footerContent {
-    padding-top: 25px;
-    text-align: center;
-    background: #f8f9fa;
+    padding-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
-/* Additional existing styles remain unchanged */
+
+/* Page Layout */
+.experience-page {
+    display: flex;
+    justify-content: center;
+    padding: 40px clamp(1rem, 5vw, 3rem);
+}
+
 .experience-section {
-    padding: 3rem 0;
+    width: 75%;
+    max-width: 1100px;
 }
 
-.subsection-title {
-    font-size: 2rem;
-    font-weight: bold;
-    border-bottom: 2px solid #0056b3;
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
+/* Section Boxes */
 .education-section,
 .internship-section,
-.work-section {
-    background: #fff;
+.work-section,
+.project-section {
+    background: linear-gradient(to right, #ffffff, #f0f4f8);
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-bottom: 2rem;
+    transition: transform 0.3s ease;
 }
 
-.program,
-.duration,
-.institution,
-.internship-year,
-.internship-duration {
-    margin-bottom: 0.5rem;
+    .project-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+/* Section Titles */
+.subsection-title {
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom: 2px solid var(--primary);
+    color: var(--primary);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
 }
 
+/* Skills Title */
 .skills-title {
     font-size: 1.25rem;
     font-weight: bold;
-    color: #0056b3;
+    color: var(--primary);
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
 
+/* Skills List */
 .skills-list {
     list-style: none;
     padding: 0;
@@ -103,53 +137,84 @@ footer {
 }
 
     .skills-list li {
-        background-color: #e0e0e0;
+        background-color: var(--secondary);
         padding: 0.5rem 0.75rem;
         border-radius: 20px;
         font-size: 0.875rem;
     }
 
+/* Links */
 a {
-    color: #0056b3;
+    color: var(--primary);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
     a:hover {
-        color: #003d80;
+        color: var(--primary-light);
     }
 
+/* Carousel Styling */
 .carousel {
-    width: 90%;
-    margin: 0 auto; /* centers the carousel horizontally */
+    width: 100%;
+    margin: 0 auto;
 }
 
-/* Carousel image styling */
 .carousel-inner img {
     object-fit: cover;
-    padding: 25px;
-    height: 750px;
-    width: 90%;
-    border-radius: 10px;
+    padding: 10px;
+    height: auto;
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-/* Smooth hover effect on carousel items */
 .carousel-item {
     transition: transform 0.5s ease-in-out;
 }
 
-.carousel-inner .carousel-item img {
-    display: block; /* voorkomt inline-spacing issues */
-    width: 100%; /* vult de hele slide-breedte */
-    height: auto; /* laat hoogte meeschalen */
+    .carousel-item:hover {
+        transform: scale(1.02);
+    }
+
+/* Project Grid (Two Columns) */
+.project-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.carousel-item:hover {
-    transform: scale(1.02);
+.project-info {
+    flex: 1 1 55%;
 }
 
-ul {
-    list-style-type: none; /* Removes the bullets */
-    margin: 0; /* Removes default margin */
-    padding: 0; /* Removes default padding */
+.project-media {
+    flex: 1 1 40%;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project-description {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    .project-grid {
+        flex-direction: column;
+    }
+}
+
+/* Divider Between Projects (Optional polish) */
+.project-section:not(:last-child)::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--primary-light), transparent);
+    margin-top: 2rem;
 }
