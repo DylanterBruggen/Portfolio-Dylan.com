@@ -11,28 +11,30 @@
 <body>
     <div class="d-flex flex-column min-vh-100">
         <header>
-            <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Portfolio Dylan</a>
+            <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm border-bottom mb-3">
+                <div class="container">
+                    <a class="navbar-brand fw-bold text-primary" asp-area="" asp-controller="Home" asp-action="Index">
+                        Portfolio Dylan
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
+                        <ul class="navbar-nav flex-grow-1 gap-3">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-primary" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="AboutMe" asp-action="AboutMe">About me</a>
+                                <a class="nav-link text-success" asp-controller="AboutMe" asp-action="AboutMe">About Me</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="XP" asp-action="Experience">Experience</a>
+                                <a class="nav-link text-danger" asp-controller="XP" asp-action="Experience">Experience</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="XP" asp-action="Projects">Projects</a>
+                                <a class="nav-link text-info" asp-controller="XP" asp-action="Projects">Projects</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Extra_Projects" asp-action="Extra">Extra Projects</a>
+                                <a class="nav-link text-warning" asp-controller="Extra_Projects" asp-action="Extra">Extra Projects</a>
                             </li>
                         </ul>
                         <partial name="_LoginPartial" />
@@ -40,6 +42,7 @@
                 </div>
             </nav>
         </header>
+
 
         <main role="main" class="flex-grow-1">
             <div class="container pb-3">
@@ -53,18 +56,37 @@
             </div>
         </main>
 
-        <footer class="border-top footer text-muted mt-auto py-3">
-            <div class="container text-center footerContent">
-                <ul class="list-unstyled">
-                    <li><a class="nav-link d-inline text-dark" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a class="nav-link d-inline text-dark" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
-                </ul>
-                <small>
-                    © 2025 Dylan ter Bruggen. All rights reserved.<br />
-                    This code is for personal portfolio use only and may not be copied, reused, or redistributed without permission.
-                </small>
+        <footer class="bg-white border-top shadow-sm mt-auto py-4">
+            <div class="container">
+                <div class="row text-center text-md-start">
+                    <!-- Column 1: Buttons -->
+                    <div class="col-md-4 mb-3">
+                        <a class="btn btn-outline-primary btn-sm me-2 mb-2" asp-controller="Home" asp-action="Contact">Contact</a>
+                        <a class="btn btn-outline-primary btn-sm mb-2" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </div>
+
+                    <!-- Column 2: Page Links -->
+                    <div class="col-md-4 mb-3">
+                        <ul class="list-unstyled">
+                            <li><a class="text-primary text-decoration-none d-block" asp-controller="Home" asp-action="Index">Home</a></li>
+                            <li><a class="text-success text-decoration-none d-block" asp-controller="AboutMe" asp-action="AboutMe">About Me</a></li>
+                            <li><a class="text-danger text-decoration-none d-block" asp-controller="XP" asp-action="Experience">Experience</a></li>
+                            <li><a class="text-info text-decoration-none d-block" asp-controller="XP" asp-action="Projects">Projects</a></li>
+                            <li><a class="text-warning text-decoration-none d-block" asp-controller="Extra_Projects" asp-action="Extra">Extra Projects</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Column 3: Copyright -->
+                    <div class="col-md-4 text-md-end">
+                        <small class="text-muted">
+                            © 2025 Dylan ter Bruggen. All rights reserved.<br />
+                            This code is for personal portfolio use only and may not be copied, reused, or redistributed without permission.
+                        </small>
+                    </div>
+                </div>
             </div>
         </footer>
+
     </div>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
