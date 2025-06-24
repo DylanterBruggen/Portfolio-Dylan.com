@@ -1,3 +1,45 @@
-﻿<div>
-    email: dylanterbruggen_zakelijk@outlook.com
+﻿@model ContactFormViewModel
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Contact Me</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <div class="mb-4">
+                        <h5>Contact me directly</h5>
+                        <p>
+                            <strong>Email:</strong>
+                            <a href="mailto:dylanterbruggen_zakelijk@outlook.com">
+                                dylanterbruggen_zakelijk@outlook.com
+                            </a>
+                        </p>
+                    </div>
+
+                    <form asp-controller="Home" asp-action="Contact" method="post">
+                        <h1>work in progrues</h1>
+                        <h5>or leave a measeage</h5>
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label"></label>
+                            <input asp-for="Name" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" type="email" class="form-control" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Message" class="form-label"></label>
+                            <textarea asp-for="Message" class="form-control" rows="5" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
