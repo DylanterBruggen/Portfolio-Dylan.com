@@ -54,5 +54,74 @@
             </div>
             <br />
         </div>
+
+
+        <div class="container mt-4">
+            <div class="row">
+                <!-- English Column -->
+                <div class="col-md-6 mb-4">
+                    <h4 class="text-primary">English</h4>
+                    <div class="mb-3">
+                        <strong>Curriculum Vitae</strong>
+                        <div class="d-flex flex-wrap gap-2 mt-1">
+                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="CV-Dylan-EN.pdf"
+                               class="btn btn-outline-primary btn-sm" target="_blank">
+                                View CV Online
+                            </a>
+                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="CV-Dylan-EN.pdf"
+                               class="btn btn-outline-secondary btn-sm">
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Cover Letter</strong>
+                        <div class="d-flex flex-wrap gap-2 mt-1">
+                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="CoverLetter.pdf"
+                               class="btn btn-outline-primary btn-sm" target="_blank">
+                                View Cover Letter
+                            </a>
+                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="CoverLetter.pdf"
+                               class="btn btn-outline-secondary btn-sm">
+                                Download Cover Letter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nederlands Column -->
+                <div class="col-md-6 mb-4">
+                    <h4 class="text-success">Nederlands</h4>
+                    <div class="mb-3">
+                        <strong>Curriculum Vitae</strong>
+                        <div class="d-flex flex-wrap gap-2 mt-1">
+                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="CV-Dylan-NL.pdf"
+                               class="btn btn-outline-primary btn-sm" target="_blank">
+                                Bekijk CV Online
+                            </a>
+                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="CV-Dylan-NL.pdf"
+                               class="btn btn-outline-secondary btn-sm">
+                                Download CV
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Sollicitatiebrief</strong>
+                        <div class="d-flex flex-wrap gap-2 mt-1">
+                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="Sollicitatiebrief.pdf"
+                               class="btn btn-outline-primary btn-sm" target="_blank">
+                                Bekijk Sollicitatiebrief
+                            </a>
+                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="Sollicitatiebrief.pdf"
+                               class="btn btn-outline-secondary btn-sm">
+                                Download Sollicitatiebrief
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </div>

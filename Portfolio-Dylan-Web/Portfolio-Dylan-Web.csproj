@@ -9,6 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\%40pdftron\**" />
+    <Compile Remove="wwwroot\view-file\**" />
+    <Content Remove="wwwroot\%40pdftron\**" />
+    <Content Remove="wwwroot\view-file\**" />
+    <EmbeddedResource Remove="wwwroot\%40pdftron\**" />
+    <EmbeddedResource Remove="wwwroot\view-file\**" />
+    <None Remove="wwwroot\%40pdftron\**" />
+    <None Remove="wwwroot\view-file\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.14" />
