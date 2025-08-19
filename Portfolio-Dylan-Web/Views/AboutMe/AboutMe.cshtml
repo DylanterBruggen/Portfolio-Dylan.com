@@ -56,72 +56,72 @@
         </div>
 
 
-        <div class="container mt-4">
-            <div class="row">
-                <!-- English Column -->
-                <div class="col-md-6 mb-4">
-                    <h4 class="text-primary">English</h4>
-                    <div class="mb-3">
-                        <strong>Curriculum Vitae</strong>
-                        <div class="d-flex flex-wrap gap-2 mt-1">
-                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="CV-Dylan-EN.pdf"
-                               class="btn btn-outline-primary btn-sm" target="_blank">
-                                View CV Online
-                            </a>
-                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="CV-Dylan-EN.pdf"
-                               class="btn btn-outline-secondary btn-sm">
-                                Download CV
-                            </a>
-                        </div>
+        <div class="container my-5">
+            <div class="row g-4">
+                <!-- English CV -->
+                <div class="col-md-6 text-center">
+                    <h4 class="mb-3">English CV</h4>
+                    <div class="cv-preview shadow rounded overflow-hidden">
+                        <embed src="/Documents/CV-Dylan-EN.pdf#page=1&zoom=100"
+                               type="application/pdf"
+                               class="w-100"
+                               style="height: 400px; border: none;" />
                     </div>
-                    <div class="mb-3">
-                        <strong>Cover Letter</strong>
-                        <div class="d-flex flex-wrap gap-2 mt-1">
-                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="CoverLetter.pdf"
-                               class="btn btn-outline-primary btn-sm" target="_blank">
-                                View Cover Letter
-                            </a>
-                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="CoverLetter.pdf"
-                               class="btn btn-outline-secondary btn-sm">
-                                Download Cover Letter
-                            </a>
-                        </div>
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <button class="btn btn-primary"
+                                onclick="openPdfModal('/Documents/CV-Dylan-EN.pdf', 'English CV')">
+                            View CV Online
+                        </button>
+                        <a href="/Documents/CV-Dylan-EN.pdf" download class="btn btn-outline-secondary">
+                            Download CV
+                        </a>
                     </div>
                 </div>
 
-                <!-- Nederlands Column -->
-                <div class="col-md-6 mb-4">
-                    <h4 class="text-success">Nederlands</h4>
-                    <div class="mb-3">
-                        <strong>Curriculum Vitae</strong>
-                        <div class="d-flex flex-wrap gap-2 mt-1">
-                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="CV-Dylan-NL.pdf"
-                               class="btn btn-outline-primary btn-sm" target="_blank">
-                                Bekijk CV Online
-                            </a>
-                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="CV-Dylan-NL.pdf"
-                               class="btn btn-outline-secondary btn-sm">
-                                Download CV
-                            </a>
-                        </div>
+                <!-- Dutch CV -->
+                <div class="col-md-6 text-center">
+                    <h4 class="mb-3">Nederlandse CV</h4>
+                    <div class="cv-preview shadow rounded overflow-hidden">
+                        <embed src="/Documents/CV-Dylan-NL.pdf#page=1&zoom=100"
+                               type="application/pdf"
+                               class="w-100"
+                               style="height: 400px; border: none;" />
                     </div>
-                    <div class="mb-3">
-                        <strong>Sollicitatiebrief</strong>
-                        <div class="d-flex flex-wrap gap-2 mt-1">
-                            <a asp-controller="Documents" asp-action="ViewDocument" asp-route-filename="Sollicitatiebrief.pdf"
-                               class="btn btn-outline-primary btn-sm" target="_blank">
-                                Bekijk Sollicitatiebrief
-                            </a>
-                            <a asp-controller="Documents" asp-action="Download" asp-route-filename="Sollicitatiebrief.pdf"
-                               class="btn btn-outline-secondary btn-sm">
-                                Download Sollicitatiebrief
-                            </a>
-                        </div>
+                    <div class="d-flex justify-content-center gap-3 mt-3">
+                        <button class="btn btn-primary"
+                                onclick="openPdfModal('/Documents/CV-Dylan-NL.pdf', 'Nederlandse CV')">
+                            Bekijk CV Online
+                        </button>
+                        <a href="/Documents/CV-Dylan-NL.pdf" download class="btn btn-outline-secondary">
+                            Download CV
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
 
+        <!-- Modal -->
+        <div class="modal fade" id="pdfModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content bg-dark text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="pdfModalLabel">Document Viewer</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <iframe id="pdfFrame" src="" width="100%" height="600px" style="border:0;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openPdfModal(url, title) {
+                document.getElementById("pdfFrame").src = url;
+                document.getElementById("pdfModalLabel").innerText = title;
+                new bootstrap.Modal(document.getElementById("pdfModal")).show();
+            }
+        </script>
     </div>
 </div>

@@ -8,11 +8,5 @@ namespace Portfolio_Dylan_Web.Controllers
         {
             return View();
         }
-
-        public IActionResult ViewDocument(string filename)
-        {
-            ViewBag.Filename = filename;
-            return View();
-        }
     }
 }
