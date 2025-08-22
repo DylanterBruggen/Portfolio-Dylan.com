@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> Localizer
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,9 +9,9 @@
     <h1 class="text-center">Portfolio: Dylan ter Bruggen</h1>
     <div class="row justify-content-center">
         <div class="col-lg-10">
-            <h4 class="text-center">welcome to my portfolio website</h4>
+            <h4 class="text-center">@Localizer["WelcomeMessage"]</h4>
 
-            <div id="carouselOverMij" class="carousel slide" data-bs-ride="carousel">
+            <div id="carouselOverMijENG" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <img src="~/Images/OverMij/Dylan_1.png.jpg" class="d-block w-100" alt="Dylan 1">
@@ -33,13 +36,13 @@
                     </div>
                 </div>
                 <!-- Carousel Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselOverMij" data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselOverMijENG" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Vorige</span>
+                    <span class="visually-hidden"></span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselOverMij" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselOverMijENG" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Volgende</span>
+                    <span class="visually-hidden"></span>
                 </button>
             </div>
             <br />

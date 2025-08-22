@@ -1,4 +1,7 @@
-﻿<div class="account-dashboard container mt-5">
+﻿@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> Localizer
+
+<div class="account-dashboard container mt-5">
     <ul class="nav nav-tabs custom-tabs mb-4" id="Account-tabs">
         <li class="nav-item">
             <a class="nav-link" href="#tab1">site logs</a>

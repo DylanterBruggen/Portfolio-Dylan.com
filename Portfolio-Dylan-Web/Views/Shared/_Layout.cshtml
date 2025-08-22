@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<SharedResource> Localizer
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -37,6 +41,15 @@
                                 <a class="nav-link text-warning" asp-controller="Extra_Projects" asp-action="Extra">Extra Projects</a>
                             </li>
                         </ul>
+
+                        <form asp-controller="Home" asp-action="SetLanguage" method="post" class="d-inline">
+                            <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
+                            <select name="culture" class="form-select form-select-sm" onchange="this.form.submit()">
+                                <option value="en" selected="@(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "en")">English</option>
+                                <option value="nl" selected="@(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "nl")">Nederlands</option>
+                            </select>
+                        </form>
+
                         @*
                             <partial name="_LoginPartial" />
                         *@
