@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Portfolio_Dylan_Web.Data;
 using Portfolio_Dylan_Web.Models;
-using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +24,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
-
-// Configure localization FIRST
-builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
 // Configure Identity
 builder.Services.AddDefaultIdentity<IdentityUser>(options =>
@@ -34,27 +32,33 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 })
 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-// Configure MVC with detailed localization
-builder.Services
-    .AddControllersWithViews()
-    .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
-    .AddDataAnnotationsLocalization(options =>
-    {
-        options.DataAnnotationLocalizerProvider = (type, factory) =>
-            factory.Create(typeof(SharedResource));
-    });
-
 // Add HTTP context accessor for culture access in services
 builder.Services.AddHttpContextAccessor();
 
+//add language service
+builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
+
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
+
+// add culture
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    var cultures = new List<CultureInfo> {
+        new CultureInfo("en"),
+        new CultureInfo("nl")
+    };
+    options.DefaultRequestCulture = new Microsoft.AspNetCore.Localization.RequestCulture("en");
+    options.SupportedCultures = cultures;
+    options.SupportedUICultures = cultures;
+});
+
 var app = builder.Build();
 
-// Configure supported cultures
-var supportedCultures = new[]
-{
-    new CultureInfo("en"),
-    new CultureInfo("nl")
-};
+//language switch
+var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
+app.UseRequestLocalization(localizationOptions);
 
 // Configure the HTTP request pipeline with proper middleware order
 if (app.Environment.IsDevelopment())
@@ -71,33 +75,11 @@ else
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-// LOCALIZATION MIDDLEWARE MUST COME BEFORE ROUTING
-app.UseRequestLocalization(new RequestLocalizationOptions
-{
-    DefaultRequestCulture = new RequestCulture("en"),
-    SupportedCultures = supportedCultures,
-    SupportedUICultures = supportedCultures,
-    FallBackToParentCultures = true,
-    FallBackToParentUICultures = true,
-    RequestCultureProviders = new List<IRequestCultureProvider>
-    {
-        new QueryStringRequestCultureProvider { QueryStringKey = "culture" },
-        new CookieRequestCultureProvider(),
-        new AcceptLanguageHeaderRequestCultureProvider()
-    }
-});
-
 app.UseRouting();
 
 // Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();
-
-// Add culture-based routes for better SEO
-app.MapControllerRoute(
-    name: "localizedDefault",
-    pattern: "{culture:regex(^(en|nl)$)}/{controller=Home}/{action=Index}/{id?}",
-    defaults: new { culture = "en" });
 
 // Endpoints
 app.MapControllerRoute(
@@ -107,8 +89,3 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 app.Run();
-
-// Shared resource class for data annotations localization
-public class SharedResource
-{
-}

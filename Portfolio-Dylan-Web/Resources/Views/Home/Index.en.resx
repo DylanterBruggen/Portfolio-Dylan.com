@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Test" xml:space="preserve">
+    <value>engels</value>
+  </data>
   <data name="WelcomeMessage" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Welcome to my portfolio website</value>
   </data>
 </root>

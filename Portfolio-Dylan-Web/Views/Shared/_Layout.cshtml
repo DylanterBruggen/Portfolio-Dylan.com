@@ -1,6 +1,6 @@
 ﻿@using System.Globalization
 @using Microsoft.Extensions.Localization
-@inject IStringLocalizer<SharedResource> Localizer
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,24 +37,15 @@
                             <li class="nav-item">
                                 <a class="nav-link text-info" asp-controller="XP" asp-action="Projects">Projects</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-warning" asp-controller="Extra_Projects" asp-action="Extra">Extra Projects</a>
-                            </li>
                         </ul>
-
-                        <form asp-controller="Home" asp-action="SetLanguage" method="post" class="d-inline">
-                            <input type="hidden" name="returnUrl" value="@Context.Request.Path@Context.Request.QueryString" />
-                            <select name="culture" class="form-select form-select-sm" onchange="this.form.submit()">
-                                <option value="en" selected="@(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "en")">English</option>
-                                <option value="nl" selected="@(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "nl")">Nederlands</option>
-                            </select>
-                        </form>
-
-                        @*
-                            <partial name="_LoginPartial" />
-                        *@
                     </div>
                 </div>
+                <div class="align-content-end">
+                    @await Html.PartialAsync("_CulturePartial")
+                </div>
+                @*
+                <partial name="_LoginPartial" />
+                *@
             </nav>
         </header>
 
@@ -77,10 +68,12 @@
         <footer class="bg-white border-top shadow-sm mt-auto py-4">
             <div class="container">
                 <div class="row text-center text-md-start">
-                    <!-- Column 1: Buttons -->
+                    <!-- Column 1: Contact me -->
                     <div class="col-md-4 mb-3">
-                        <a class="btn btn-outline-primary btn-sm me-2 mb-2" asp-controller="Home" asp-action="Contact">Contact</a>
-                        <a class="btn btn-outline-primary btn-sm mb-2" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <h6>Contact me:</h6>
+                        <a href="mailto:Portfolio.Dylan@outlook.com">
+                            Portfolio.Dylan@outlook.com
+                        </a>
                     </div>
 
                     <!-- Column 2: Page Links -->
@@ -90,7 +83,7 @@
                             <li><a class="text-success text-decoration-none d-block" asp-controller="AboutMe" asp-action="AboutMe">About Me</a></li>
                             <li><a class="text-danger text-decoration-none d-block" asp-controller="XP" asp-action="Experience">Experience</a></li>
                             <li><a class="text-info text-decoration-none d-block" asp-controller="XP" asp-action="Projects">Projects</a></li>
-                            <li><a class="text-warning text-decoration-none d-block" asp-controller="Extra_Projects" asp-action="Extra">Extra Projects</a></li>
+                            <li><a class="text-warning text-decoration-none d-block" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
                         </ul>
                     </div>
 
